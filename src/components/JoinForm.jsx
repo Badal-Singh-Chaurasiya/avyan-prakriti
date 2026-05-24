@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
-import { X, Sparkles, Sprout, Award } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Sprout, Award, Sparkles } from 'lucide-react';
 
 export default function JoinForm({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
-    name: '',
-    roll: '',
-    hall: '',
-    interest: 'campaigns'
+    name: '', roll: '', hall: '', interest: 'campaigns',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError]             = useState('');
+  const [stewardId]                   = useState(() => `AP-${Math.floor(1000 + Math.random() * 9000)}`);
+
+  // Lock body scroll while open
+  useEffect(() => {
+    if (isOpen) document.body.style.overflow = 'hidden';
+    else        document.body.style.overflow = '';
+    return ()  => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -23,150 +28,168 @@ export default function JoinForm({ isOpen, onClose }) {
     setIsSubmitted(true);
   };
 
-  const handleReset = () => {
+  const handleClose = () => {
     setFormData({ name: '', roll: '', hall: '', interest: 'campaigns' });
     setIsSubmitted(false);
+    setError('');
     onClose();
   };
 
+  const inputClass =
+    'w-full bg-white dark:bg-[#07130c] border border-emerald-200 dark:border-emerald-800 rounded-xl px-4 py-3 text-emerald-950 dark:text-emerald-50 placeholder-emerald-500/60 dark:placeholder-emerald-600/60 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 focus:border-transparent transition-all text-sm font-jakarta';
+  const labelClass =
+    'block text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider mb-1.5 font-outfit';
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Dark overlay backdrop */}
-      <div 
-        onClick={handleReset}
-        className="absolute inset-0 bg-[#060d08]/75 backdrop-blur-sm transition-opacity" 
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Join Avyan Prakriti">
+      {/* Backdrop */}
+      <div
+        onClick={handleClose}
+        className="absolute inset-0 bg-emerald-950/60 dark:bg-black/70 backdrop-blur-sm transition-opacity"
+        aria-hidden="true"
       />
 
-      {/* Modal Dialog */}
-      <div className="relative glass-card w-full max-w-lg rounded-[32px] p-6 sm:p-10 border border-white/30 dark:border-white/5 shadow-2xl z-10 overflow-hidden animate-fade-in-up">
-        {/* Top Glow Accent */}
-        <div className="absolute top-0 left-0 w-full h-[6px] bg-gradient-to-r from-primary to-[#a3f5ae]" />
+      {/* Modal */}
+      <div className="relative bg-white dark:bg-[#06110c] w-full max-w-md rounded-3xl shadow-2xl shadow-emerald-900/20 dark:shadow-none z-10 overflow-hidden animate-fade-in-up border border-emerald-100 dark:border-emerald-800">
+        {/* Top accent bar */}
+        <div className="h-1.5 w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500" />
 
-        {/* Close Button */}
-        <button 
-          onClick={handleReset}
-          className="absolute top-6 right-6 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-[#a3f5ae] hover:bg-slate-100 dark:hover:bg-darkbg-border/60 transition-colors"
+        {/* Close */}
+        <button
+          onClick={handleClose}
+          className="absolute top-5 right-5 p-2 rounded-full text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/40 transition-colors"
+          aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        {!isSubmitted ? (
-          <form onSubmit={handleSubmit} className="space-y-6 text-left">
-            <div>
-              <h3 className="font-outfit text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-                <Sprout className="w-5 h-5 text-primary dark:text-[#a3f5ae] animate-bounce" />
-                <span>Join Avyan Prakriti</span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-[#e2f0e6]/60 font-jakarta mt-1">
-                Volunteer for our next hostel recycling drive at NIT Rourkela.
-              </p>
-            </div>
+        <div className="p-7 sm:p-8">
+          {!isSubmitted ? (
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+              {/* Header */}
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Sprout className="w-5 h-5 text-emerald-500 dark:text-emerald-400 animate-bounce" aria-hidden="true" />
+                  <h3 className="font-outfit text-2xl font-extrabold text-emerald-950 dark:text-emerald-50">Join Avyan Prakriti</h3>
+                </div>
+                <p className="text-xs text-emerald-700/80 dark:text-emerald-300/80 font-jakarta">
+                  Volunteer for our next hostel recycling drive at NIT Rourkela.
+                </p>
+              </div>
 
-            {error && (
-              <p className="text-xs font-bold text-rose-500 font-jakarta bg-rose-50 dark:bg-rose-950/20 p-3 rounded-xl border border-rose-100 dark:border-rose-950/40">
-                {error}
-              </p>
-            )}
+              {error && (
+                <p className="text-xs font-semibold text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 p-3 rounded-xl font-jakarta">
+                  {error}
+                </p>
+              )}
 
-            <div className="space-y-4 font-jakarta text-sm">
               {/* Full Name */}
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-500 dark:text-[#e2f0e6]/60 uppercase tracking-wider">Full Name *</label>
-                <input 
+              <div>
+                <label htmlFor="jf-name" className={labelClass}>Full Name *</label>
+                <input
+                  id="jf-name"
                   type="text"
                   placeholder="e.g. Priyanshu Panda"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-darkbg border border-slate-200 dark:border-darkbg-border/80 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-[#a3f5ae] focus:bg-white transition-all text-slate-800 dark:text-white"
+                  className={inputClass}
+                  required
+                  autoComplete="name"
                 />
               </div>
 
               {/* Roll Number */}
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-500 dark:text-[#e2f0e6]/60 uppercase tracking-wider">NITR Roll Number *</label>
-                <input 
+              <div>
+                <label htmlFor="jf-roll" className={labelClass}>NITR Roll Number *</label>
+                <input
+                  id="jf-roll"
                   type="text"
                   placeholder="e.g. 122XX0000"
                   value={formData.roll}
                   onChange={(e) => setFormData({ ...formData, roll: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-darkbg border border-slate-200 dark:border-darkbg-border/80 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-[#a3f5ae] focus:bg-white transition-all text-slate-800 dark:text-white"
+                  className={inputClass}
+                  required
                 />
               </div>
 
-              {/* Hall of Residence */}
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-500 dark:text-[#e2f0e6]/60 uppercase tracking-wider">Hall of Residence *</label>
-                <select 
+              {/* Hall */}
+              <div>
+                <label htmlFor="jf-hall" className={labelClass}>Hall of Residence *</label>
+                <select
+                  id="jf-hall"
                   value={formData.hall}
                   onChange={(e) => setFormData({ ...formData, hall: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-darkbg border border-slate-200 dark:border-darkbg-border/80 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-[#a3f5ae] focus:bg-white transition-all text-slate-800 dark:text-white"
+                  className={inputClass}
+                  required
                 >
                   <option value="">Select your hall</option>
-                  <option value="vs">Visvesvaraya Hall (VS)</option>
-                  <option value="kms">Kiran Mazumdar-Shaw Hall (KMS)</option>
-                  <option value="hb">Homi Bhabha Hall (HB)</option>
-                  <option value="sd">Satish Dhawan Hall (SD)</option>
-                  <option value="gdb">G.D. Birla Hall (GDB)</option>
-                  <option value="mv">M. Visvesvaraya Hall (MV)</option>
-                  <option value="mss">M.S. Swaminathan Hall (MSS)</option>
+                  <option value="VS">Visvesvaraya Hall (VS)</option>
+                  <option value="KMS">Kiran Mazumdar-Shaw Hall (KMS)</option>
+                  <option value="HB">Homi Bhabha Hall (HB)</option>
+                  <option value="SD">Satish Dhawan Hall (SD)</option>
+                  <option value="GDB">G.D. Birla Hall (GDB)</option>
+                  <option value="MV">M. Visvesvaraya Hall (MV)</option>
+                  <option value="MSS">M.S. Swaminathan Hall (MSS)</option>
                 </select>
               </div>
 
-              {/* Division Interest */}
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-500 dark:text-[#e2f0e6]/60 uppercase tracking-wider">Division of Interest</label>
-                <select 
+              {/* Interest */}
+              <div>
+                <label htmlFor="jf-interest" className={labelClass}>Division of Interest</label>
+                <select
+                  id="jf-interest"
                   value={formData.interest}
                   onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-darkbg border border-slate-200 dark:border-darkbg-border/80 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-[#a3f5ae] focus:bg-white transition-all text-slate-800 dark:text-white"
+                  className={inputClass}
                 >
-                  <option value="campaigns">Environmental Campaigns & Drives</option>
-                  <option value="creative">Creative Design & Posters</option>
-                  <option value="webdev">Web Development & Automation</option>
-                  <option value="pr">PR, Outreach & Communications</option>
-                  <option value="research">R&D and Segregation Metrics</option>
+                  <option value="campaigns">Environmental Campaigns &amp; Drives</option>
+                  <option value="creative">Creative Design &amp; Posters</option>
+                  <option value="webdev">Web Development &amp; Automation</option>
+                  <option value="pr">PR, Outreach &amp; Communications</option>
+                  <option value="research">R&amp;D and Segregation Metrics</option>
                   <option value="finance">Finance Division (Treasurer Intern)</option>
                 </select>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-xl font-bold font-outfit text-base shadow-lg shadow-primary/25 dark:shadow-emerald-950/30 transition-all hover:scale-[1.01] active:scale-95 mt-4"
-            >
-              Submit Registration
-            </button>
-          </form>
-        ) : (
-          <div className="text-center py-8 space-y-6 animate-fade-in-up">
-            <div className="bg-primary/10 dark:bg-[#a3f5ae]/10 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto text-primary dark:text-[#a3f5ae] animate-pulse">
-              <Award className="w-10 h-10" />
-            </div>
-            
-            <div className="space-y-2">
-              <h3 className="font-outfit text-2xl font-extrabold text-slate-900 dark:text-white flex items-center justify-center gap-1">
-                <span>Welcome Aboard!</span>
-                <Sparkles className="w-5 h-5 text-amber-500 fill-amber-500 animate-spin" />
-              </h3>
-              <p className="font-jakarta text-slate-600 dark:text-[#e2f0e6]/80 text-sm leading-relaxed max-w-sm mx-auto">
-                Thank you for joining, <strong className="text-primary dark:text-[#a3f5ae]">{formData.name}</strong>! Your registration is complete. Our Stewardship Council team will reach out to you shortly.
-              </p>
-            </div>
+              <button
+                type="submit"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white py-3.5 rounded-xl font-bold font-outfit text-base shadow-lg shadow-emerald-200 dark:shadow-none transition-all hover:scale-[1.02] active:scale-95 mt-2"
+              >
+                Submit Registration
+              </button>
+            </form>
+          ) : (
+            /* ── Success ── */
+            <div className="text-center py-6 space-y-5">
+              <div className="w-20 h-20 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mx-auto">
+                <Award className="w-10 h-10 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+              </div>
 
-            <div className="bg-slate-50 dark:bg-darkbg-border/30 border border-slate-100 dark:border-darkbg-border/40 p-4 rounded-2xl text-left max-w-sm mx-auto text-xs font-jakarta space-y-2 text-slate-500 dark:text-[#e2f0e6]/60">
-              <div><strong>Steward ID:</strong> AP-{Math.floor(1000 + Math.random() * 9000)}</div>
-              <div><strong>Roll Registered:</strong> {formData.roll.toUpperCase()}</div>
-              <div><strong>Assigned Hall:</strong> {formData.hall.toUpperCase()} Hall</div>
-            </div>
+              <div className="space-y-2">
+                <h3 className="font-outfit text-2xl font-extrabold text-emerald-950 dark:text-emerald-50 flex items-center justify-center gap-1.5">
+                  Welcome Aboard!
+                  <Sparkles className="w-5 h-5 text-yellow-500 dark:text-yellow-400 fill-yellow-400 dark:fill-yellow-300" aria-hidden="true" />
+                </h3>
+                <p className="font-jakarta text-emerald-800/80 dark:text-emerald-100/80 text-sm leading-relaxed max-w-xs mx-auto">
+                  Thank you for joining, <strong className="text-emerald-700 dark:text-emerald-300">{formData.name}</strong>! Our council team will reach out shortly.
+                </p>
+              </div>
 
-            <button
-              onClick={handleReset}
-              className="bg-primary hover:bg-emerald-800 text-white px-8 py-3 rounded-full font-bold font-outfit text-sm shadow-md transition-all hover:scale-105 active:scale-95"
-            >
-              Return Home
-            </button>
-          </div>
-        )}
+              <div className="glass-green border border-emerald-300/60 dark:border-emerald-700/50 p-4 rounded-2xl text-left text-xs font-jakarta space-y-1.5 text-emerald-900 dark:text-emerald-100 max-w-xs mx-auto">
+                <div><strong className="text-emerald-800 dark:text-emerald-300">Steward ID:</strong> {stewardId}</div>
+                <div><strong className="text-emerald-800 dark:text-emerald-300">Roll Registered:</strong> {formData.roll.toUpperCase()}</div>
+                <div><strong className="text-emerald-800 dark:text-emerald-300">Assigned Hall:</strong> {formData.hall} Hall</div>
+              </div>
+
+              <button
+                onClick={handleClose}
+                className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-8 py-3 rounded-full font-bold font-outfit text-sm shadow-md shadow-emerald-200 dark:shadow-none transition-all hover:scale-105 active:scale-95"
+              >
+                Return Home
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

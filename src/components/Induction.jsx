@@ -1,279 +1,137 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Leaf, Users, BarChart3 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function Induction() {
-  const [formData, setFormData] = useState({
-    name: '',
-    department: '',
-    year: '',
-    skills: '',
-    reason: ''
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState('');
+const BENEFITS = [
+  {
+    icon: Leaf,
+    title: '100% Volunteer-Driven',
+    desc: 'No membership fees — pure passion for the environment and community.',
+  },
+  {
+    icon: BarChart3,
+    title: 'Data-Backed Impact',
+    desc: 'Every kilogram collected is documented, tracked, and published.',
+  },
+  {
+    icon: Users,
+    title: 'Synergised Social Impact',
+    desc: 'Fusing environmental cleanup with student welfare alongside AASRA NGO.',
+  },
+];
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+const DEPARTMENTS = [
+  'Computer Science Engineering',
+  'Mechanical Engineering',
+  'Civil Engineering',
+  'Electrical Engineering',
+  'Electronics & Communication',
+  'Chemical Engineering',
+  'Metallurgical Engineering',
+  'Life Sciences',
+  'Mathematics',
+  'Physics',
+  'Chemistry',
+  'Other',
+];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.name.trim() || !formData.department || !formData.year || !formData.reason.trim()) {
-      setError('Please fill in all required fields.');
-      return;
-    }
-    setError('');
-    setIsSubmitted(true);
-  };
+export default function Induction({ openModal }) {
 
-  const handleReset = () => {
-    setFormData({ name: '', department: '', year: '', skills: '', reason: '' });
-    setIsSubmitted(false);
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  const inputClass =
+    'w-full px-4 py-3 rounded-xl border border-emerald-300/60 dark:border-emerald-800/60 bg-white/80 dark:bg-[#07130c]/80 text-emerald-950 dark:text-emerald-50 placeholder-emerald-700/50 dark:placeholder-emerald-400/50 focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 focus:border-transparent transition-all text-sm font-jakarta outline-none';
+  const labelClass =
+    'block text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider mb-2 font-outfit';
 
   return (
-    <section id="induction" className="py-24 bg-gradient-to-br from-white via-secondary/5 to-white dark:from-darkbg dark:via-secondary/5 dark:to-darkbg border-b border-gray-100 dark:border-darkbg-border/20 transition-colors">
-      <div className="px-4 sm:px-6">
+    <section
+      id="induction"
+      className="relative bg-transparent dark:bg-gradient-to-b dark:from-[#050b08] dark:via-[#06110c] dark:to-[#050b08] py-24 overflow-hidden transition-colors"
+    >
+      {/* Background blobs */}
+      <div className="absolute -top-32 right-0 w-96 h-96 bg-emerald-200/50 dark:bg-emerald-800/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute -bottom-32 left-0 w-96 h-96 bg-teal-200/40 dark:bg-teal-800/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+
         {/* Header */}
         <motion.div
-          className="text-center mb-16 space-y-4"
+          className="reveal text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
-            Become a Changemaker
+          <span className="inline-block text-emerald-800 dark:text-emerald-300 text-xs font-bold tracking-[0.25em] uppercase bg-emerald-100/80 dark:bg-emerald-900/40 border border-emerald-300/60 dark:border-emerald-700 px-4 py-1.5 rounded-full mb-5 shadow-sm">
+            JOIN THE MOVEMENT
+          </span>
+          <h2 className="font-outfit text-4xl sm:text-5xl font-bold text-emerald-950 dark:text-white leading-tight">
+            Become a <span className="nature-gradient">Changemaker</span>
           </h2>
+          <p className="mt-4 text-emerald-900/80 dark:text-emerald-100/70 text-base sm:text-lg max-w-2xl mx-auto font-jakarta leading-relaxed">
+            Be part of the student force shaping a greener, more sustainable NIT Rourkela.
+          </p>
         </motion.div>
 
-        {/* Benefits Grid */}
-        {/* Split Layout: Form & Info */}
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left: Info Section */}
+        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="space-y-10 w-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <div>
-              <h3 className="font-outfit text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Why Join Us?
-              </h3>
-              <p className="font-jakarta text-slate-600 dark:text-darkbg-text/70 leading-relaxed">
-                Avyan Prakriti is more than a club—it's a movement to embed sustainability into campus culture. We believe in action over words, and community over competition.
+              <h3 className="font-outfit text-2xl sm:text-3xl font-bold text-emerald-950 dark:text-emerald-50 mb-3">Why Join Us?</h3>
+              <p className="font-jakarta text-emerald-900/80 dark:text-emerald-100/70 leading-relaxed text-sm sm:text-base max-w-2xl mx-auto">
+                Avyan Prakriti is more than a club — it's a movement to embed sustainability into campus culture.
+                We believe in action over words, and community over competition.
               </p>
             </div>
 
-            {[
-              {
-                icon: "✓",
-                title: "100% Volunteer-Driven",
-                desc: "No membership fees, pure passion for the environment"
-              },
-              {
-                icon: "✓",
-                title: "Data-Backed Impact",
-                desc: "Every kilogram collected is documented and tracked"
-              },
-              {
-                icon: "✓",
-                title: "Synergized Social Impact",
-                desc: "Fusing environmental cleanup with student welfare drives alongside dedicated campus bodies like AASRA."
-              }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="flex gap-4 items-start"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 * (idx + 1) }}
-                viewport={{ once: true }}
-              >
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">
-                  {item.icon}
-                </div>
-                <div>
-                  <h4 className="font-outfit font-semibold text-slate-900 dark:text-white mb-1">
-                    {item.title}
-                  </h4>
-                  <p className="font-jakarta text-sm text-slate-600 dark:text-darkbg-text/70">
-                    {item.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Right: Form Section */}
-          <motion.div
-            className="glass-card rounded-3xl p-6 sm:p-8 border border-white/30 dark:border-white/5 shadow-xl"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            {isSubmitted ? (
-              /* Success State */
-              <motion.div
-                className="text-center space-y-6 py-8"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex justify-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2, type: 'spring' }}
-                  >
-                    <CheckCircle className="w-16 h-16 text-secondary" />
-                  </motion.div>
-                </div>
-                <h3 className="font-outfit text-2xl font-bold text-slate-900 dark:text-white">
-                  Application Received!
-                </h3>
-                <p className="font-jakarta text-slate-600 dark:text-darkbg-text/70">
-                  Welcome to the movement, <strong>{formData.name}</strong>! Our team will review your application and reach out within 48 hours.
-                </p>
-                <div className="bg-secondary/10 dark:bg-secondary/5 border border-secondary/30 dark:border-secondary/10 rounded-2xl p-4 text-left text-xs space-y-2 font-jakarta text-slate-600 dark:text-darkbg-text/70">
-                  <div><strong>Department:</strong> {formData.department}</div>
-                  <div><strong>Year:</strong> {formData.year}</div>
-                  {formData.skills && <div><strong>Skills:</strong> {formData.skills}</div>}
-                </div>
-                <button
-                  onClick={handleReset}
-                  className="w-full bg-secondary hover:bg-secondary/90 text-white py-3 rounded-xl font-semibold transition-all hover:scale-105 active:scale-95"
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {BENEFITS.map(({ icon: Icon, title, desc }, i) => (
+                <motion.div
+                  key={title}
+                  className="flex flex-col items-center text-center group bg-white dark:bg-[#07130c] p-6 rounded-3xl shadow-sm border border-emerald-100 dark:border-emerald-800/60 hover:shadow-md hover:-translate-y-1 transition-all"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.12 * (i + 1), duration: 0.5 }}
+                  viewport={{ once: true }}
                 >
-                  Apply Again
-                </button>
-              </motion.div>
-            ) : (
-              /* Form State */
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="font-outfit text-xl font-bold text-slate-900 dark:text-white mb-6">
-                  Application Form
-                </h3>
-
-                {error && (
-                  <div className="text-xs font-semibold text-red-600 bg-red-50 dark:bg-red-950/20 p-3 rounded-lg border border-red-200 dark:border-red-900/30">
-                    {error}
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-200/60 dark:bg-emerald-800/60 group-hover:bg-emerald-300/80 dark:group-hover:bg-emerald-700/80 transition-colors flex items-center justify-center mb-4">
+                    <Icon className="w-7 h-7 text-emerald-800 dark:text-emerald-300" />
                   </div>
-                )}
+                  <h4 className="font-outfit font-bold text-emerald-950 dark:text-emerald-50 text-base mb-2">{title}</h4>
+                  <p className="font-jakarta text-xs text-emerald-900/70 dark:text-emerald-100/60 leading-relaxed">{desc}</p>
+                </motion.div>
+              ))}
+            </div>
 
-                {/* Name */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-darkbg-text/80 uppercase tracking-wider mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-darkbg-border/30 bg-white dark:bg-darkbg-card text-slate-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-sm"
-                    required
-                  />
-                </div>
+            {/* Decorative stat pill */}
+            <div className="glass-green rounded-3xl p-8 border border-emerald-300/60 dark:border-emerald-700/50">
+              <p className="text-sm text-emerald-800 dark:text-emerald-300 font-bold uppercase tracking-wider mb-5 font-outfit">What You'll Gain</p>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                {['Leadership Skills', 'Event Management', 'NGO Collaboration', 'Content Creation', 'Environmental Science', 'Community Building'].map((tag) => (
+                  <span key={tag} className="text-xs sm:text-sm bg-emerald-100/80 text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-200 border border-emerald-300/60 dark:border-emerald-700/60 px-4 py-1.5 rounded-full font-jakarta">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-                {/* Department */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-darkbg-text/80 uppercase tracking-wider mb-2">
-                    Department *
-                  </label>
-                  <select
-                    name="department"
-                    value={formData.department}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-darkbg-border/30 bg-white dark:bg-darkbg-card text-slate-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-sm"
-                    required
-                  >
-                    <option value="">Select department</option>
-                    <option value="cse">Computer Science Engineering</option>
-                    <option value="mechanical">Mechanical Engineering</option>
-                    <option value="civil">Civil Engineering</option>
-                    <option value="electrical">Electrical Engineering</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                {/* Year */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-darkbg-text/80 uppercase tracking-wider mb-2">
-                    Year *
-                  </label>
-                  <select
-                    name="year"
-                    value={formData.year}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-darkbg-border/30 bg-white dark:bg-darkbg-card text-slate-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-sm"
-                    required
-                  >
-                    <option value="">Select year</option>
-                    <option value="1st">1st Year</option>
-                    <option value="2nd">2nd Year</option>
-                    <option value="3rd">3rd Year</option>
-                    <option value="4th">4th Year</option>
-                  </select>
-                </div>
-
-                {/* Skills */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-darkbg-text/80 uppercase tracking-wider mb-2">
-                    Skills / Interests
-                  </label>
-                  <input
-                    type="text"
-                    name="skills"
-                    value={formData.skills}
-                    onChange={handleChange}
-                    placeholder="e.g., Design, Content, Logistics, Web Dev"
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-darkbg-border/30 bg-white dark:bg-darkbg-card text-slate-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-sm"
-                  />
-                </div>
-
-                {/* Reason */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-darkbg-text/80 uppercase tracking-wider mb-2">
-                    Why do you want to join? *
-                  </label>
-                  <textarea
-                    name="reason"
-                    value={formData.reason}
-                    onChange={handleChange}
-                    placeholder="Share your motivation and goals..."
-                    rows="3"
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-darkbg-border/30 bg-white dark:bg-darkbg-card text-slate-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-sm resize-none"
-                    required
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90 text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95 mt-2"
-                >
-                  Apply for Induction
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-            )}
+            {/* CTA Button */}
+            <div className="pt-4">
+              <a
+                href="https://forms.gle/ekA8d7LDrQFWcfbM6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-8 py-4 rounded-full font-bold font-outfit text-lg shadow-xl shadow-emerald-200/50 dark:shadow-none transition-all hover:scale-105 active:scale-95"
+              >
+                Apply for Induction
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

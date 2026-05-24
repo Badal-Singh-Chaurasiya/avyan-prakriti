@@ -1,104 +1,180 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Leaf, Sun, Moon } from 'lucide-react';
 
+const NAV_LINKS = [
+  { label: 'Home',           anchor: 'home'       },
+  { label: 'About',          anchor: 'about'      },
+  { label: 'Initiatives',    anchor: 'events'     },
+  { label: 'Council',        anchor: 'council'    },
+  { label: 'Transformation', anchor: 'slider'     },
+  { label: 'Induction',      anchor: 'induction'  },
+  { label: 'Contact',        anchor: 'contact'    },
+];
 
-export default function Navbar({ darkMode, setDarkMode }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export default function Navbar({ openModal, darkMode, setDarkMode }) {
+  const [isScrolled, setIsScrolled]       = useState(false);
+  const [mobileOpen, setMobileOpen]       = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  // 1. Scroll effect for Navbar background with smooth tracking
+  // Navbar background on scroll
   useEffect(() => {
     let ticking = false;
-    
-    const handleScroll = () => {
+    const onScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 30);
           ticking = false;
         });
         ticking = true;
       }
     };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // 2. Optimized Scrollspy for graceful active state tracking
+  // Scrollspy
   useEffect(() => {
-    const ids = ['home', 'about', 'council', 'events', 'induction'];
+    const ids = NAV_LINKS.map((l) => l.anchor);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { 
-        rootMargin: '-50% 0px -50% 0px', 
-        threshold: 0 
-      }
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
     );
-    
     ids.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-    
     return () => observer.disconnect();
   }, []);
 
+  const handleNav = (anchor) => {
+    setActiveSection(anchor);
+    setMobileOpen(false);
+    const el = document.getElementById(anchor);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out ${
-      isScrolled 
-        ? 'py-3 bg-white/80 dark:bg-darkbg-card/85 backdrop-blur-md shadow-md border-b border-gray-200/50 dark:border-darkbg-border/60' 
-        : 'py-5 bg-transparent'
-    }`}>
-      <div className="flex justify-between items-center px-4 sm:px-6">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out ${
+        isScrolled
+          ? 'py-2 glass shadow-lg shadow-green-900/10 border-b border-green-200/40 dark:shadow-green-900/30 dark:border-green-800/40'
+          : 'py-4 bg-transparent'
+      }`}
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div className="flex justify-between items-center px-4 sm:px-6 max-w-7xl mx-auto">
+
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="bg-white p-1 rounded-full border-2 border-primary dark:border-[#a3f5ae] shadow-md">
-            <img alt="Avyan Prakriti" className="w-12 h-12 rounded-full object-cover" src="/avyanlogo.png" /> 
+        <button
+          onClick={() => handleNav('home')}
+          className="flex items-center gap-2.5 group focus-visible:ring-2 rounded-xl p-1"
+          aria-label="Go to top"
+        >
+          <div className="bg-white p-1 rounded-full border-2 border-emerald-400 shadow-md shadow-emerald-200/60 dark:shadow-emerald-900/60 dark:border-emerald-500 group-hover:shadow-emerald-300/80 transition-shadow">
+            <img
+              alt="Avyan Prakriti logo"
+              className="w-10 h-10 rounded-full object-cover"
+              src="/avyanlogo.png"
+            />
           </div>
-          <span className={`font-outfit text-xl font-bold tracking-tight ${!isScrolled && !darkMode ? 'text-white' : 'text-slate-900 dark:text-[#e2f0e6]'}`}>
-            Avyan <span className="text-primary dark:text-[#a3f5ae]">Prakriti</span>
+          <span className={`font-outfit text-lg font-bold tracking-tight ${isScrolled ? 'text-emerald-900 dark:text-emerald-50' : 'text-emerald-950 dark:text-emerald-50'}`}>
+            Avyan <span className="text-emerald-600 dark:text-emerald-400">Prakriti</span>
           </span>
-        </div>
+        </button>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {['Home', 'About', 'Council', 'Events', 'Induction'].map((item) => {
-            const id = item.toLowerCase();
-            const isActive = activeSection === id;
+        <div className="hidden lg:flex items-center gap-1">
+          {NAV_LINKS.map(({ label, anchor }) => {
+            const isActive = activeSection === anchor;
             return (
-              <a
-                key={item}
-                href={`#${id}`}
-                onClick={() => setActiveSection(id)}
-                className={`text-sm font-medium relative py-2 px-1 group
-                  ${isActive 
-                    ? 'text-primary dark:text-[#a3f5ae] [text-shadow:0_0_10px_rgba(34,197,94,0.6)]' 
-                    : !isScrolled && !darkMode ? 'text-white/90 hover:text-white' : 'text-slate-600 dark:text-[#e2f0e6]/80 hover:text-slate-900 dark:hover:text-[#e2f0e6]'
-                  } transition-colors duration-300`}
+              <button
+                key={anchor}
+                onClick={() => handleNav(anchor)}
+                className={`relative text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 group ${
+                  isActive
+                    ? 'text-emerald-800 bg-emerald-100/80 dark:text-emerald-200 dark:bg-emerald-800/40'
+                    : 'text-emerald-800/80 hover:text-emerald-900 hover:bg-emerald-50/80 dark:text-emerald-200/80 dark:hover:text-emerald-100 dark:hover:bg-emerald-800/30'
+                } ${!isScrolled && !darkMode && 'text-emerald-950'}`}
+                aria-current={isActive ? 'page' : undefined}
               >
-                {item}
-                {/* Animated Underline */}
-                <span 
-                  className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary to-emerald-400 dark:from-[#a3f5ae] dark:to-emerald-300 transition-all duration-500 ease-out ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                {label}
+                <span
+                  className={`absolute bottom-0.5 left-3 h-[2px] rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-300 ${
+                    isActive ? 'w-[calc(100%-1.5rem)]' : 'w-0 group-hover:w-[calc(100%-1.5rem)]'
                   }`}
                 />
-              </a>
+              </button>
             );
           })}
         </div>
 
-        {/* Theme Toggle */}
-        <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full text-slate-600 dark:text-[#e2f0e6]">
-          {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-        </button>
+        {/* CTA + Hamburger + Theme Toggle */}
+        <div className="flex items-center gap-3">
+          {/* Theme Toggle */}
+          <button 
+            onClick={() => setDarkMode(!darkMode)} 
+            className="p-2 rounded-full text-emerald-800 hover:bg-emerald-100/50 dark:text-emerald-200 dark:hover:bg-emerald-800/40 transition-colors"
+            aria-label="Toggle Dark Mode"
+          >
+            {darkMode ? <Sun className="w-5 h-5 text-yellow-300" /> : <Moon className="w-5 h-5" />}
+          </button>
+
+          <button
+            onClick={openModal}
+            className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md shadow-emerald-300/40 dark:shadow-emerald-900/40 transition-all hover:scale-105 active:scale-95 font-outfit"
+            aria-label="Open join form"
+          >
+            <Leaf className="w-3.5 h-3.5" />
+            Join Us
+          </button>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            className="lg:hidden p-2 rounded-xl text-emerald-800 hover:bg-emerald-50 dark:text-emerald-200 dark:hover:bg-emerald-800/40 transition-colors"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown */}
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-400 ease-out ${
+          mobileOpen ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="glass-green mx-4 mt-2 mb-3 rounded-2xl shadow-xl border border-green-200/50 dark:border-green-800/40 divide-y divide-green-200/30 dark:divide-green-800/30 overflow-hidden">
+          {NAV_LINKS.map(({ label, anchor }) => {
+            const isActive = activeSection === anchor;
+            return (
+              <button
+                key={anchor}
+                onClick={() => handleNav(anchor)}
+                className={`w-full text-left px-5 py-3.5 text-sm font-medium transition-colors font-jakarta ${
+                  isActive
+                    ? 'text-emerald-800 bg-emerald-100/60 dark:text-emerald-200 dark:bg-emerald-800/40 font-semibold'
+                    : 'text-emerald-900 hover:bg-emerald-50 dark:text-emerald-100 dark:hover:bg-emerald-800/20'
+                }`}
+              >
+                {label}
+              </button>
+            );
+          })}
+          <button
+            onClick={() => { openModal(); setMobileOpen(false); }}
+            className="w-full text-left px-5 py-3.5 text-sm font-semibold text-emerald-800 bg-emerald-100/50 hover:bg-emerald-200/60 dark:text-emerald-200 dark:bg-emerald-800/50 dark:hover:bg-emerald-700/60 transition-colors font-outfit"
+          >
+            🌿 Join Us
+          </button>
+        </div>
       </div>
     </nav>
   );
