@@ -124,14 +124,14 @@ export default function Navbar({ openModal, darkMode, setDarkMode }) {
             {darkMode ? <Sun className="w-5 h-5 text-yellow-300" /> : <Moon className="w-5 h-5" />}
           </button>
 
-          <button
-            onClick={openModal}
+          <a
+            href="https://forms.gle/VWqoo3v5RttUbWWL7" target="_blank" rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md shadow-emerald-300/40 dark:shadow-emerald-900/40 transition-all hover:scale-105 active:scale-95 font-outfit"
             aria-label="Open join form"
           >
             <Leaf className="w-3.5 h-3.5" />
             Join Us
-          </button>
+          </a>
 
           {/* Mobile hamburger */}
           <button
@@ -151,7 +151,7 @@ export default function Navbar({ openModal, darkMode, setDarkMode }) {
           mobileOpen ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="glass-green mx-4 mt-2 mb-3 rounded-2xl shadow-xl border border-green-200/50 dark:border-green-800/40 divide-y divide-green-200/30 dark:divide-green-800/30 overflow-hidden">
+        <div className="bg-white dark:bg-[#07130c] mx-4 mt-2 mb-3 rounded-2xl shadow-xl border border-green-200/50 dark:border-green-800/40 divide-y divide-green-200/30 dark:divide-green-800/30 overflow-hidden">
           {NAV_LINKS.map(({ label, anchor }) => {
             const isActive = activeSection === anchor;
             return (
@@ -168,12 +168,13 @@ export default function Navbar({ openModal, darkMode, setDarkMode }) {
               </button>
             );
           })}
-          <button
-            onClick={() => { openModal(); setMobileOpen(false); }}
-            className="w-full text-left px-5 py-3.5 text-sm font-semibold text-emerald-800 bg-emerald-100/50 hover:bg-emerald-200/60 dark:text-emerald-200 dark:bg-emerald-800/50 dark:hover:bg-emerald-700/60 transition-colors font-outfit"
+          <a
+            href="https://forms.gle/VWqoo3v5RttUbWWL7" target="_blank" rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            className="block w-full text-left px-5 py-3.5 text-sm font-semibold text-emerald-800 bg-emerald-100/50 hover:bg-emerald-200/60 dark:text-emerald-200 dark:bg-emerald-800/50 dark:hover:bg-emerald-700/60 transition-colors font-outfit"
           >
             🌿 Join Us
-          </button>
+          </a>
         </div>
       </div>
     </nav>

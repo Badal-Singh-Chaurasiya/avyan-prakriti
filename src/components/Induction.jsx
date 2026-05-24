@@ -16,7 +16,7 @@ const BENEFITS = [
   {
     icon: Users,
     title: 'Synergised Social Impact',
-    desc: 'Fusing environmental cleanup with student welfare alongside AASRA NGO.',
+    desc: 'Fusing environmental cleanup with student welfare alongside other NGOs and clubs.',
   },
 ];
 
@@ -123,7 +123,7 @@ export default function Induction({ openModal }) {
             {/* CTA Button */}
             <div className="pt-4">
               <a
-                href="https://forms.gle/ekA8d7LDrQFWcfbM6"
+                href="https://forms.gle/VWqoo3v5RttUbWWL7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-8 py-4 rounded-full font-bold font-outfit text-lg shadow-xl shadow-emerald-200/50 dark:shadow-none transition-all hover:scale-105 active:scale-95"

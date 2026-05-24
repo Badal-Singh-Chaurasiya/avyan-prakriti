@@ -105,13 +105,13 @@ export default function Hero({ openModal }) {
             <span>Explore Initiatives</span>
             <ArrowRight className="w-4 h-4" />
           </a>
-          <button
-            onClick={openModal}
+          <a
+            href="https://forms.gle/VWqoo3v5RttUbWWL7" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold text-base px-8 py-3.5 rounded-full shadow-lg backdrop-blur-sm transition-all hover:scale-105 active:scale-95 font-outfit"
           >
             <Leaf className="w-4 h-4" />
             <span>Join The Movement</span>
-          </button>
+          </a>
         </div>
 
         {/* Stats */}
