@@ -15,7 +15,7 @@ export default function Footer() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <div className="bg-white p-1 rounded-full border-2 border-emerald-500 shadow-md flex-shrink-0">
-                <img alt="Avyan Prakriti" className="w-12 h-12 rounded-full object-cover" src="/src/assets/avyanlogo.png" /> 
+                <img alt="Avyan Prakriti" className="w-12 h-12 rounded-full object-cover" src={AvyanLogo} /> 
               </div>
               <span className="font-outfit text-xl font-bold tracking-tight text-white">
                 Avyan <span className="text-emerald-400">Prakriti</span>
