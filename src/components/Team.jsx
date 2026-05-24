@@ -1,18 +1,26 @@
 import React from 'react';
-import { Leaf, Award, ArrowRight } from 'lucide-react';
+import { Leaf, Award } from 'lucide-react';
+import vyomImg from '../assets/Vyom.jpeg';
+import arpitaImg from '../assets/Arpita.jpeg';
+import rituparnaImg from '../assets/rituparna.jpg';
+import aaditaImg from '../assets/Aadita.png';
+import anandImg from '../assets/Anand.jpeg';
+import gayatriImg from '../assets/Gayatri.jpeg';
+import anushkaImg from '../assets/Anushka.jpeg';
+import badalImg from '../assets/Badal.jpeg';
 
 const MEMBERS = [
   {
     name: 'Vyom Srivastava',
     role: 'President',
-    image: '/src/assets/Vyom.jpeg',
+    image: vyomImg,
     featured: true,
     desc: 'Leading Avyan Prakriti’s vision, initiatives, and core operations while building a stronger culture of sustainability across campus.',
   },
   {
     name: 'Arpita Patnaik',
     role: 'Vice President',
-    image: '/src/assets/Arpita.jpeg',
+    image: arpitaImg,
     featured: false,
     desc: 'Coordinating internal operations, team management, and ensuring every project runs smoothly behind the scenes.',
   },
@@ -20,42 +28,42 @@ const MEMBERS = [
   {
     name: 'Rituparna Bai',
     role: 'PR Head',
-    image: '/src/assets/rituparna.jpg',
+    image: rituparnaImg,
     featured: false,
     desc: 'Managing collaborations, outreach, official communications, and building meaningful connections beyond the club.',
   },
   {
     name: 'Aadita Babu',
     role: 'Creative Head',
-    image: '/src/assets/Aadita.png',
+    image: aaditaImg,
     featured: false,
     desc: 'Shaping the club’s visual identity through creative storytelling, branding, and impactful design.',
   },
   {
     name: 'Anand Kumar',
     role: 'Campaign Head',
-    image: '/src/assets/Anand.jpeg',
+    image: anandImg,
     featured: false,
     desc: 'Driving environmental campaigns, awareness initiatives, and on-ground activities that create real impact.',
   },
   {
     name: 'Gayatri Pandit',
     role: 'Research and Development Head',
-    image: '/src/assets/Gayatri.jpeg',
+    image: gayatriImg,
     featured: false,
     desc: 'Leading research initiatives, data collection, and developing innovative sustainable solutions for our projects.',
   },
   {
     name: 'Anushka Mech',
     role: 'Publicity Head',
-    image: '/src/assets/Anushka.jpeg',
+    image: anushkaImg,
     featured: false,
     desc: 'Managing promotions, outreach, and the club’s public presence while making sure Avyan Prakriti reaches the right audience in the right way.',
   },
   {
     name: 'Badal Singh Chaurasiya',
     role: 'Web Dev Head',
-    image: '/src/assets/Badal.jpeg',
+    image: badalImg,
     featured: false,
     desc: 'Building and maintaining the club’s digital presence while making sure everything works as smoothly as it looks.',
   },
