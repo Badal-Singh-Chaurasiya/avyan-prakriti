@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserPlus, Code } from 'lucide-react';
+import rituparna from "../assets/rituparna.jpg"
 
 export default function Team({ openModal }) {
   const members = [
@@ -34,7 +35,7 @@ export default function Team({ openModal }) {
     {
       name: "Rituparna",
       role: "PR Head",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop",
+      avatar: rituparna,
       bio: "Fostering external institutional collaborations, sponsorships, and administrative public notices.",
       social: { linkedin: "#", github: "#" }
     },
