@@ -1,120 +1,99 @@
 import React from 'react';
-import { Target, Eye, Shield, Users, Landmark, Trees, Milestone } from 'lucide-react';
 
 export default function About() {
-  const coreValues = [
+  const bgUrl = "https://images.tribuneindia.com/cms/gall_content/2015/11/2015_11$largeimg02_Monday_2015_003323953.jpg";
+
+  const values = [
     {
-      icon: <Milestone className="w-5 h-5 text-primary dark:text-[#a3f5ae]" />,
       title: "Action Over Advocacy",
-      desc: "We prioritize actual field clean-ups and direct waste drives over mere discussions and posters."
+      description: "Act meaningfully rather than advocating endlessly"
     },
     {
-      icon: <Users className="w-5 h-5 text-primary dark:text-[#a3f5ae]" />,
-      title: "Community As Strength",
-      desc: "Our momentum scales as student groups mobilize. Solid cooperation builds green ecosystems."
+      title: "Fundamental Duty",
+      description: "Fulfill our environmental duty towards nature"
     },
     {
-      icon: <Trees className="w-5 h-5 text-primary dark:text-[#a3f5ae]" />,
-      title: "Duty to Nature",
-      desc: "Environmental restoration is a primary community debt. Protecting local ecosystems is a core call."
-    },
-    {
-      icon: <Landmark className="w-5 h-5 text-primary dark:text-[#a3f5ae]" />,
       title: "Social Integration",
-      desc: "We recycle waste paper into customized writing notebooks, donating them to regional schools via AASRA NGO."
+      description: "Build a stronger community while strengthening social integration"
     },
     {
-      icon: <Shield className="w-5 h-5 text-primary dark:text-[#a3f5ae]" />,
       title: "Transparency",
-      desc: "Every single kilogram of collection is documented, cataloged, and accounted for in public impact reviews."
+      description: "Remain transparent in our impact and initiatives"
+    },
+    {
+      title: "Continuous Growth",
+      description: "Think, improve and impact"
     }
   ];
 
   return (
-    <section id="about" className="py-24 bg-white dark:bg-darkbg border-b border-gray-100 dark:border-darkbg-border/20 transition-colors">
-      <div className="px-4 sm:px-6">
-        
-        {/* Top Header Split Grid */}
-        <div className="flex flex-col md:flex-row items-center gap-12 mb-20">
-          <div className="flex-1 text-left space-y-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              Who We Are & What We Stand For
+    <section
+      id="about"
+      className="relative bg-cover bg-center bg-no-repeat min-h-screen"
+      style={{ backgroundImage: `url(${bgUrl})` }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/75 to-black/85" />
+
+      <div className="relative max-w-6xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+          {/* Left Content */}
+          <div className="lg:col-span-2">
+            {/* Label */}
+            <div className="inline-block mb-6">
+              <span className="text-emerald-400 text-sm font-semibold tracking-widest">ESTABLISHED 2026</span>
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="font-outfit text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
+              About Avyan Prakrti
             </h2>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <div className="flex items-center gap-2 text-slate-700 dark:text-[#e2f0e6] font-semibold text-sm">
-                <span className="w-2.5 h-2.5 rounded-full bg-primary" />
-                <span>100% Volunteer Driven</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-700 dark:text-[#e2f0e6] font-semibold text-sm">
-                <span className="w-2.5 h-2.5 rounded-full bg-accent" />
-                <span>Data-Backed Impact</span>
-              </div>
-            </div>
-          </div>
 
-          <div className="flex-1 relative">
-            <div className="absolute inset-0 bg-emerald-500/10 dark:bg-emerald-500/5 blur-2xl rounded-full scale-95 pointer-events-none"></div>
-            <img 
-              alt="Student clean-up campaign" 
-              className="rounded-[32px] w-full h-[320px] sm:h-[350px] object-cover shadow-xl border border-gray-200/50 dark:border-white/5"
-              src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800&auto=format&fit=crop"
-            />
-          </div>
-        </div>
-
-        {/* Vision & Mission Double Panel */}
-        <div className="flex flex-col md:flex-row gap-8 mb-20">
-          {/* Vision card */}
-          <div className="flex-1 glass-card rounded-[28px] p-8 text-left hover-glow transition-all duration-300 shadow-sm">
-            <div className="bg-primary/10 dark:bg-accent-lime/10 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
-              <Eye className="w-6 h-6 text-primary dark:text-[#a3f5ae]" />
-            </div>
-            <h3 className="font-outfit text-xl font-bold mb-3 text-slate-900 dark:text-white">Our Vision</h3>
-            <p className="font-jakarta text-slate-600 dark:text-[#e2f0e6]/70 leading-relaxed text-sm sm:text-base">
-              To embed sustainable environmental actions seamlessly into the campus lifestyle, molding future community leaders who view ecological care not as a duty, but as a habit.
+            {/* Description */}
+            <p className="text-gray-200 text-lg leading-relaxed mb-8">
+              Founded in 2026, Avyan Prakrti is a student-led ENSO dedicated towards building an environmentally conscious community and working towards a greener future.
             </p>
-          </div>
 
-          {/* Mission card */}
-          <div className="glass-card rounded-[28px] p-8 text-left hover-glow transition-all duration-300 shadow-sm">
-            <div className="bg-primary/10 dark:bg-accent-lime/10 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
-              <Target className="w-6 h-6 text-primary dark:text-[#a3f5ae]" />
+            {/* Our Mission */}
+            <div className="mb-16">
+              <h3 className="text-white text-2xl font-semibold mb-4">Our Mission</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Our mission is to reduce waste, promote recycling, encourage sustainable consumption, raise awareness and channel resources for the benefit of the people and the planet.
+              </p>
             </div>
-            <h3 className="font-outfit text-xl font-bold mb-3 text-slate-900 dark:text-white">Our Mission</h3>
-            <p className="font-jakarta text-slate-600 dark:text-[#e2f0e6]/70 leading-relaxed text-sm sm:text-base">
-              Deploying scalable recycling systems, targeted clean-up campaigns, and education initiatives across halls of residence that yield quantifiable environmental metrics and social benefits.
-            </p>
+
+            {/* Quote */}
+            <div className="mt-12 pt-8 border-t border-white/20 pl-5 border-l-4 border-emerald-400">
+              <p className="text-gray-200 italic text-base leading-relaxed opacity-90">
+                "At Avyan Prakrti, we believe that every hand extended in service, is a small step towards achieving a greener tomorrow. Together, let us make environmental consciousness an instinct rather than a responsibility, and a vision of a greener planet into a walking reality."
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Core Values Section */}
-        <div className="text-center space-y-4">
-          <h3 className="font-outfit text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Our Core Pillars</h3>
-          <p className="text-slate-500 dark:text-[#e2f0e6]/60 font-jakarta max-w-xl mx-auto text-sm sm:text-base">
-            These fundamental principles guide every campaign we conduct, from small hostel sweeps to institute-wide collaborations.
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 pt-10 text-left">
-            {coreValues.map((val, idx) => (
-              <div 
-                key={idx} 
-                className="glass-card hover-glow rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 relative group overflow-hidden"
-              >
-                {/* Accent top line on hover */}
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 dark:bg-[#a3f5ae]" />
-                
-                <div>
-                  <div className="bg-primary/5 dark:bg-[#a3f5ae]/5 w-10 h-10 rounded-lg flex items-center justify-center mb-4">
-                    {val.icon}
+          {/* Right Card - Values */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-2xl p-8 shadow-2xl">
+              <h3 className="text-gray-900 text-2xl font-bold mb-8">Our Values</h3>
+              
+              <div className="space-y-6">
+                {values.map((value, index) => (
+                  <div key={index} className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-6 w-6 rounded-full bg-emerald-400">
+                        <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-gray-900 font-semibold mb-1">{value.title}</h4>
+                      <p className="text-gray-700 text-sm">{value.description}</p>
+                    </div>
                   </div>
-                  <h4 className="font-outfit font-bold text-base text-slate-900 dark:text-white mb-2">{val.title}</h4>
-                  <p className="font-jakarta text-xs text-slate-500 dark:text-[#e2f0e6]/60 leading-relaxed">{val.desc}</p>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
-
       </div>
     </section>
   );

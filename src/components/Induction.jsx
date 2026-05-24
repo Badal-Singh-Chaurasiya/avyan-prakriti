@@ -55,9 +55,6 @@ export default function Induction() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="inline-block bg-secondary/15 dark:bg-secondary/10 text-secondary px-4 py-1.5 rounded-full text-xs font-bold font-jakarta uppercase tracking-wider">
-            Join Our Movement
-          </div>
           <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
             Become a Changemaker
           </h2>
@@ -96,8 +93,8 @@ export default function Induction() {
               },
               {
                 icon: "✓",
-                title: "NGO Partnerships",
-                desc: "Collaborate with AASRA for real-world social impact"
+                title: "Synergized Social Impact",
+                desc: "Fusing environmental cleanup with student welfare drives alongside dedicated campus bodies like AASRA."
               }
             ].map((item, idx) => (
               <motion.div

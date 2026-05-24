@@ -50,11 +50,12 @@ export default function Footer() {
           <div className="md:col-span-3 text-left space-y-4">
             <h4 className="font-outfit text-sm font-bold text-white uppercase tracking-wider">Quick Navigation</h4>
             <ul className="space-y-2 text-sm font-jakarta">
+              <li><a href="#about" className="hover:text-secondary transition-colors">Home</a></li>
               <li><a href="#about" className="hover:text-secondary transition-colors">About</a></li>
               <li><a href="#council" className="hover:text-secondary transition-colors">Council</a></li>
               <li><a href="#events" className="hover:text-secondary transition-colors">Events</a></li>
               <li><a href="#induction" className="hover:text-secondary transition-colors">Induction</a></li>
-              <li><a href="#suggestions" className="hover:text-secondary transition-colors">Suggestions</a></li>
+              {/* <li><a href="#suggestions" className="hover:text-secondary transition-colors">Suggestions</a></li> */}
             </ul>
           </div>
 
@@ -64,9 +65,9 @@ export default function Footer() {
             <p className="font-jakarta text-xs leading-relaxed text-slate-400">
               Active campaigns conducted in Visvesvaraya (VS) Hall and Kiran Mazumdar-Shaw (KMS) Hall, expanding to Satish Dhawan (SD) and Homi Bhabha (HB) Halls in Spring 2026.
             </p>
-            <div className="text-xs font-bold text-emerald-400 font-outfit uppercase bg-emerald-950/40 border border-emerald-900/30 px-3 py-2 rounded-xl w-fit">
+            {/* <div className="text-xs font-bold text-emerald-400 font-outfit uppercase bg-emerald-950/40 border border-emerald-900/30 px-3 py-2 rounded-xl w-fit">
               Collaboration with AASRA NGO
-            </div>
+            </div> */}
           </div>
 
         </div>
@@ -77,16 +78,23 @@ export default function Footer() {
             © 2026 Avyan Prakriti. Together We Can Make This Change Happen.
           </div>
           
-          <div className="flex items-center gap-2 bg-slate-900/60 dark:bg-darkbg-border/20 border border-slate-800 dark:border-darkbg-border/40 px-4 py-2 rounded-2xl text-slate-300">
+          {/* <div className="flex items-center gap-2 bg-slate-900/60 dark:bg-darkbg-border/20 border border-slate-800 dark:border-darkbg-border/40 px-4 py-2 rounded-2xl text-slate-300">
             <Code className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
             <span>
               Crafted with <Heart className="w-3 h-3 text-rose-500 fill-rose-500 inline animate-bounce" /> by{' '}
               <strong className="text-emerald-400 font-outfit">Badal</strong> (Web Dev Head, AP)
             </span>
-          </div>
+          </div> */}
+          <div class="flex flex-col items-start col-span-1">
+            <a href="mailto:avyanprakriti@gmail.com" class="flex items-center gap-2 text-sm text-gray-300 hover:text-green-400 transition-colors duration-300 mb-6">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">  
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+              avyanprakriti@gmail.com
+            </a>
+            </div>
         </div>
-
-      </div>
+        </div>
     </footer>
   );
 }

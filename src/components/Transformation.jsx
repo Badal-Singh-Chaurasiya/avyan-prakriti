@@ -44,9 +44,6 @@ export default function Transformation() {
         
         {/* Title */}
         <div className="text-left md:text-center mb-16 space-y-4">
-          <div className="inline-block bg-primary/10 dark:bg-[#a3f5ae]/10 text-primary dark:text-[#a3f5ae] px-4 py-1.5 rounded-full text-xs font-bold font-jakarta uppercase tracking-wider">
-            Expedition Reports
-          </div>
           <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2 md:justify-center">
             <Sparkles className="w-5 h-5 text-emerald-500 fill-emerald-500" />
             <span>The Ecological Transformation</span>

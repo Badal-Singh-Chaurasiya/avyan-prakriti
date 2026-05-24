@@ -3,11 +3,10 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Events from './components/Events';
-import Transformation from './components/Transformation';
 import Team from './components/Team';
 import Induction from './components/Induction';
 import JoinForm from './components/JoinForm';
-import Suggestions from './components/Suggestions';
+// import Suggestions from './components/Suggestions';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -38,9 +37,8 @@ export default function App() {
         <About />
         <Team openModal={() => setIsModalOpen(true)} />
         <Events />
-        <Transformation />
         <Induction />
-        <Suggestions />
+        {/* <Suggestions /> */}
       </main>
 
       {/* Footer */}
