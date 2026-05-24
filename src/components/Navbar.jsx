@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
-import AvyanLogo from '../assets/avyanlogo.png.jpeg';
+import AvyanLogo from '../assets/avyanlogo.png';
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,7 +60,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className="bg-white p-1 rounded-full border-2 border-primary dark:border-[#a3f5ae] shadow-md">
-            <img alt="Avyan Prakriti" className="w-12 h-12 rounded-full object-cover" src="/src/assets/avyanlogo.png.jpeg" /> 
+            <img alt="Avyan Prakriti" className="w-12 h-12 rounded-full object-cover" src="/src/assets/avyanlogo.png" /> 
           </div>
           <span className={`font-outfit text-xl font-bold tracking-tight ${!isScrolled && !darkMode ? 'text-white' : 'text-slate-900 dark:text-[#e2f0e6]'}`}>
             Avyan <span className="text-primary dark:text-[#a3f5ae]">Prakriti</span>
