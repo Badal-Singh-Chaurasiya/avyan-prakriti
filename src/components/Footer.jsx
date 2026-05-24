@@ -1,6 +1,5 @@
 import React from 'react';
-import { Leaf, Heart, Code } from 'lucide-react';
-import { motion } from 'framer-motion';
+import AvyanLogo from '../assets/avyanlogo.png.jpeg';
 
 export default function Footer() {
   return (
@@ -12,13 +11,13 @@ export default function Footer() {
           {/* Logo & description */}
           <div className="md:col-span-5 space-y-6 text-left">
             <div 
-              className="flex items-center gap-2 group cursor-pointer" 
+              className="flex items-center gap-3 group cursor-pointer" 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <div className="bg-emerald-500/10 p-2 rounded-xl text-emerald-400">
-                <Leaf className="w-5 h-5 fill-current" />
+              <div className="bg-white p-1 rounded-full border-2 border-emerald-500 shadow-md flex-shrink-0">
+                <img alt="Avyan Prakriti" className="w-12 h-12 rounded-full object-cover" src="/src/assets/avyanlogo.png.jpeg" /> 
               </div>
-              <span className="font-outfit text-xl font-bold tracking-tight text-white font-outfit">
+              <span className="font-outfit text-xl font-bold tracking-tight text-white">
                 Avyan <span className="text-emerald-400">Prakriti</span>
               </span>
             </div>
@@ -72,29 +71,22 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom credits & custom tribute to Developer Badal */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-jakarta text-slate-500">
+        {/* Bottom credits & contact */}
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-jakarta text-slate-500">
           <div>
             © 2026 Avyan Prakriti. Together We Can Make This Change Happen.
           </div>
           
-          {/* <div className="flex items-center gap-2 bg-slate-900/60 dark:bg-darkbg-border/20 border border-slate-800 dark:border-darkbg-border/40 px-4 py-2 rounded-2xl text-slate-300">
-            <Code className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-            <span>
-              Crafted with <Heart className="w-3 h-3 text-rose-500 fill-rose-500 inline animate-bounce" /> by{' '}
-              <strong className="text-emerald-400 font-outfit">Badal</strong> (Web Dev Head, AP)
-            </span>
-          </div> */}
-          <div class="flex flex-col items-start col-span-1">
-            <a href="mailto:avyanprakriti@gmail.com" class="flex items-center gap-2 text-sm text-gray-300 hover:text-green-400 transition-colors duration-300 mb-6">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">  
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
+          <div className="flex items-center gap-2">
+            <a href="mailto:avyanprakriti@gmail.com" className="flex items-center gap-2 text-sm text-slate-300 hover:text-emerald-400 transition-colors duration-300">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
               avyanprakriti@gmail.com
             </a>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </footer>
   );
 }

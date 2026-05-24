@@ -5,9 +5,21 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
   }
+  
   body {
     @apply transition-colors duration-300;
+  }
+  
+  /* Global smooth transitions for all elements */
+  * {
+    @apply transition-colors duration-300;
+  }
+  
+  /* Smooth transitions for buttons and interactive elements */
+  button, a {
+    @apply transition-all duration-300 ease-out;
   }
 }
 

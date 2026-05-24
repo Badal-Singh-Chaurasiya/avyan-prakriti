@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default function About() {
-  const bgUrl = "https://images.tribuneindia.com/cms/gall_content/2015/11/2015_11$largeimg02_Monday_2015_003323953.jpg";
-
   const values = [
     {
       title: "Action Over Advocacy",
@@ -29,10 +27,8 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative bg-cover bg-center bg-no-repeat min-h-screen"
-      style={{ backgroundImage: `url(${bgUrl})` }}
+      className="relative min-h-screen bg-[#2d1e12] dark:bg-[#1a120a]"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/75 to-black/85" />
 
       <div className="relative max-w-6xl mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
