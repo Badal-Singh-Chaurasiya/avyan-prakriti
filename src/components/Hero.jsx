@@ -25,8 +25,8 @@ function useCountUp(target, duration = 1800, active = false) {
 }
 
 const STATS = [
-  { icon: Recycle,  value: 800,  suffix: '+ KG', label: 'Waste Diverted'    },
-  { icon: Users,    value: 100,  suffix: '+',     label: 'Active Stewards'   },
+  { icon: Recycle,  value: 0,  suffix: '+ KG', label: 'Waste Diverted'    },
+  { icon: Users,    value: 60,  suffix: '+',     label: 'Active Stewards'   },
   { icon: Leaf,     value: 100,  suffix: '%',     label: 'Student-Led Drive' },
 ];
 
@@ -78,7 +78,7 @@ export default function Hero({ openModal }) {
         {/* Badge */}
         <div className="reveal inline-flex items-center gap-2 bg-white/10 border border-white/25 px-5 py-2 rounded-full text-emerald-100 text-xs font-bold tracking-widest uppercase font-jakarta shadow-lg backdrop-blur-md">
           <Sparkles className="w-3.5 h-3.5 text-emerald-300 animate-pulse" />
-          <span>NIT Rourkela's Eco Stewardship Club</span>
+          <span>NIT Rourkela's Eco Stewardship Community</span>
         </div>
 
         {/* Heading */}
@@ -133,14 +133,7 @@ export default function Hero({ openModal }) {
         </div>
 
       </div>
-
-      {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 opacity-60">
-        <span className="text-white text-[10px] tracking-widest uppercase font-jakarta">Scroll</span>
-        <div className="w-5 h-8 border-2 border-white/40 rounded-full flex items-start justify-center pt-1">
-          <div className="w-1 h-2 bg-white rounded-full animate-bounce" />
-        </div>
-      </div>
+     
     </section>
   );
 }

@@ -13,12 +13,12 @@ const STORY = [
   {
     tag: 'WHO WE ARE',
     heading: 'A Student-Led Force for Nature',
-    body: 'Founded in 2026 at NIT Rourkela, Avyan Prakriti is a student-led Environmental Protection Club dedicated to building an environmentally conscious campus community and working towards a greener, more sustainable future for everyone.',
+    body: 'Founded in 2026 at NIT Rourkela, Avyan Prakriti is a student-led Environmental Protection Community dedicated to building an environmentally conscious campus community and working towards a greener, more sustainable future for everyone.',
   },
   {
     tag: 'WHAT WE\'VE DONE',
     heading: 'From Words to Action',
-    body: 'Previously operating as Avyan Prithvi, our organization successfully diverted over 800+ kgs of waste through multiple sustainability drives, supported by a passionate network of 100+ volunteers dedicated to creating meaningful environmental impact.',
+    body: 'Previously operating as Avyan Prithvi, our organization successfully diverted over 100+ kgs of waste through multiple sustainability drives, supported by a passionate network of 60+ volunteers dedicated to creating meaningful environmental impact.',
   },
   {
     tag: 'WHY IT MATTERS',
