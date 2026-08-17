@@ -6,7 +6,7 @@ const BENEFITS = [
   {
     icon: Leaf,
     title: '100% Volunteer-Driven',
-    desc: 'No membership fees — pure passion for the environment and community.',
+    desc: 'No membership fees — pure passion for the environment and club.',
   },
   {
     icon: BarChart3,
@@ -85,7 +85,7 @@ export default function Induction({ openModal }) {
               <h3 className="font-outfit text-2xl sm:text-3xl font-bold text-emerald-950 dark:text-emerald-50 mb-3">Why Join Us?</h3>
               <p className="font-jakarta text-emerald-900/80 dark:text-emerald-100/70 leading-relaxed text-sm sm:text-base max-w-2xl mx-auto">
                 Avyan Prakriti is more than a club — it's a movement to embed sustainability into campus culture.
-                We believe in action over words, and community over competition.
+                We believe in action over words, and club over competition.
               </p>
             </div>
 
@@ -112,7 +112,7 @@ export default function Induction({ openModal }) {
             <div className="glass-green rounded-3xl p-8 border border-emerald-300/60 dark:border-emerald-700/50">
               <p className="text-sm text-emerald-800 dark:text-emerald-300 font-bold uppercase tracking-wider mb-5 font-outfit">What You'll Gain</p>
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                {['Leadership Skills', 'Event Management', 'NGO Collaboration', 'Content Creation', 'Environmental Science', 'Community Building'].map((tag) => (
+                {['Leadership Skills', 'Event Management', 'NGO Collaboration', 'Content Creation', 'Environmental Science', 'Club Building'].map((tag) => (
                   <span key={tag} className="text-xs sm:text-sm bg-emerald-100/80 text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-200 border border-emerald-300/60 dark:border-emerald-700/60 px-4 py-1.5 rounded-full font-jakarta">
                     {tag}
                   </span>

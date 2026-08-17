@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { TreePine, Megaphone, Trash2, GraduationCap } from 'lucide-react';
+import { TreePine, Megaphone, Trash2 } from 'lucide-react';
 
 const INITIATIVES = [
   {
@@ -43,13 +43,6 @@ const COLOR_MAP = {
     tag: 'bg-green-100/80 text-green-800 border-green-300/60 dark:bg-green-900/40 dark:text-green-300 dark:border-green-700/60',
     stat: 'text-green-800 dark:text-green-300',
     hover: 'hover:border-green-300 dark:hover:border-green-600',
-  },
-  cyan: {
-    bg: 'bg-cyan-50 dark:bg-cyan-900/20',
-    icon: 'bg-cyan-200/60 text-cyan-800 dark:bg-cyan-800/60 dark:text-cyan-300',
-    tag: 'bg-cyan-100/80 text-cyan-800 border-cyan-300/60 dark:bg-cyan-900/40 dark:text-cyan-300 dark:border-cyan-700/60',
-    stat: 'text-cyan-800 dark:text-cyan-300',
-    hover: 'hover:border-cyan-300 dark:hover:border-cyan-600',
   },
 };
 
@@ -144,7 +137,7 @@ export default function Events() {
           })}
           
           {/* Coming Soon Card */}
-          <div className="reveal reveal-delay-3 sm:col-span-2 lg:col-span-2 glass rounded-3xl p-6 sm:p-8 flex flex-col justify-center items-center text-center shadow-inner shadow-emerald-900/5 dark:shadow-none border border-emerald-200/60 dark:border-emerald-800/40 bg-emerald-50/40 dark:bg-[#06110c]/40 relative overflow-hidden group min-h-[260px]">
+          <div className="reveal reveal-delay-4 sm:col-span-2 lg:col-span-1 glass rounded-3xl p-6 sm:p-8 flex flex-col justify-center items-center text-center shadow-inner shadow-emerald-900/5 dark:shadow-none border border-emerald-200/60 dark:border-emerald-800/40 bg-emerald-50/40 dark:bg-[#06110c]/40 relative overflow-hidden group min-h-[260px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.08),transparent_60%)] group-hover:scale-125 transition-transform duration-1000" />
             <div className="relative z-10 flex flex-col items-center">
               <div className="w-14 h-14 rounded-full bg-emerald-100/50 dark:bg-emerald-900/40 flex items-center justify-center mb-5 border border-emerald-200/50 dark:border-emerald-700/50 animate-[pulse_3s_ease-in-out_infinite]">

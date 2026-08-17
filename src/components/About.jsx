@@ -4,7 +4,7 @@ import { Heart, Globe, Users, Lightbulb, Eye } from 'lucide-react';
 const VALUES = [
   { icon: Heart, title: 'Action Over Advocacy', desc: 'Act meaningfully rather than advocating endlessly' },
   { icon: Globe, title: 'Fundamental Duty', desc: 'Fulfill our environmental duty towards nature' },
-  { icon: Users, title: 'Social Integration', desc: 'Build a stronger community while strengthening social bonds' },
+  { icon: Users, title: 'Social Integration', desc: 'Build a stronger club while strengthening social bonds' },
   { icon: Eye, title: 'Transparency', desc: 'Remain transparent in our impact and all initiatives' },
   { icon: Lightbulb, title: 'Continuous Growth', desc: 'Think, improve, and create lasting impact' },
 ];
@@ -13,7 +13,7 @@ const STORY = [
   {
     tag: 'WHO WE ARE',
     heading: 'A Student-Led Force for Nature',
-    body: 'Founded in 2026 at NIT Rourkela, Avyan Prakriti is a student-led Environmental Protection Community dedicated to building an environmentally conscious campus community and working towards a greener, more sustainable future for everyone.',
+    body: 'Founded in 2026 at NIT Rourkela, Avyan Prakriti is a student-led Environmental Protection Club dedicated to building an environmentally conscious campus club and working towards a greener, more sustainable future for everyone.',
   },
   {
     tag: 'WHAT WE\'VE DONE',
@@ -76,7 +76,7 @@ export default function About() {
             <div>
               <h3 className="font-outfit text-3xl font-bold text-emerald-950 dark:text-emerald-50 mb-4">Our Mission</h3>
               <p className="text-emerald-900/80 dark:text-emerald-100/70 leading-relaxed font-jakarta text-base">
-                Our mission is to reduce waste, promote recycling, encourage sustainable consumption, raise environmental awareness, and channel community resources for the benefit of people and the planet.
+                Our mission is to reduce waste, promote recycling, encourage sustainable consumption, raise environmental awareness, and channel club resources for the benefit of people and the planet.
               </p>
             </div>
 

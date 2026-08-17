@@ -78,7 +78,7 @@ export default function Hero({ openModal }) {
         {/* Badge */}
         <div className="reveal inline-flex items-center gap-2 bg-white/10 border border-white/25 px-5 py-2 rounded-full text-emerald-100 text-xs font-bold tracking-widest uppercase font-jakarta shadow-lg backdrop-blur-md">
           <Sparkles className="w-3.5 h-3.5 text-emerald-300 animate-pulse" />
-          <span>NIT Rourkela's Eco Stewardship Community</span>
+          <span>NIT Rourkela's Eco Stewardship Club</span>
         </div>
 
         {/* Heading */}

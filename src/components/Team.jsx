@@ -8,6 +8,15 @@ import anandImg from '../assets/Anand.jpeg';
 import gayatriImg from '../assets/Gayatri.jpeg';
 import anushkaImg from '../assets/Anushka.jpeg';
 import badalImg from '../assets/Badal.jpeg';
+import facadmam from '../assets/facadmam.jpeg';
+import treasurerIMg from '../assets/treasurerIMg.jpeg';
+
+const ADVISOR = {
+  name: 'Club Faculty Advisor',
+  role: 'Faculty Mentor',
+  image: facadmam,
+  desc: 'Providing strategic guidance, institutional support, and mentorship to empower Avyan Prakriti’s mission of driving student-led environmental action and campus sustainability.',
+};
 
 const MEMBERS = [
   {
@@ -27,10 +36,17 @@ const MEMBERS = [
 
   {
     name: 'Rituparna Bai',
-    role: 'PR Head',
+    role: 'Secretary',
     image: rituparnaImg,
     featured: false,
     desc: 'Managing collaborations, outreach, official communications, and building meaningful connections beyond the club.',
+  },
+  {
+    name: 'Ayushi Singh',
+    role: 'Treasurer',
+    image: treasurerIMg,
+    featured: false,
+    desc: 'Managing club finances, budgeting for campus drives, and ensuring transparent allocation of resources for all sustainability initiatives.',
   },
   {
     name: 'Aadita Babu',
@@ -93,6 +109,35 @@ export default function Team({ openModal }) {
           </p>
         </div>
 
+        <div className="mb-8 flex justify-center">
+          <div className="w-full max-w-[340px] rounded-[32px] overflow-hidden border border-emerald-200 bg-white shadow-md shadow-emerald-100/40 dark:border-emerald-800/50 dark:bg-[#091810] transition-all duration-300 hover:-translate-y-1">
+            <div className="relative h-[220px] w-full overflow-hidden">
+              <img
+                src={ADVISOR.image}
+                alt={ADVISOR.name}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-110"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+            </div>
+
+            <div className="flex flex-col justify-center p-5 text-center">
+              <h3 className="font-outfit font-extrabold text-emerald-950 dark:text-emerald-50 leading-tight text-lg mb-0.5">
+                {ADVISOR.name}
+              </h3>
+              <p className="font-jakarta font-medium text-emerald-700 dark:text-emerald-400 text-xs">
+                {ADVISOR.role}
+              </p>
+              <p className="font-jakarta mt-3 leading-relaxed text-[11px] sm:text-xs text-emerald-700/80 dark:text-emerald-300/80">
+                {ADVISOR.desc}
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {MEMBERS.map((member, i) => {
@@ -109,7 +154,8 @@ export default function Team({ openModal }) {
                 <div className="relative shrink-0 w-full h-[200px] sm:h-[220px] overflow-hidden">
                   <img
                     alt={`Photo of ${member.name}`}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className={`absolute inset-0 w-full h-full object-cover
+                       transition-transform duration-700 group-hover:scale-110 ${member.name === 'Ayushi Singh' ? 'object-bottom' : ''}`}
                     src={member.image}
                     onError={(e) => {
                       e.target.onerror = null;
